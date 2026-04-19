@@ -128,6 +128,8 @@ static uint64 (*syscalls[])(void) = {
 [SYS_close]   sys_close,
 };
 
+static uint64 syscall_count[NELEM(syscalls)];
+
 void
 syscall(void)
 {
@@ -138,6 +140,7 @@ syscall(void)
   if(num > 0 && num < NELEM(syscalls) && syscalls[num]) {
     // Use num to lookup the system call function for num, call it,
     // and store its return value in p->trapframe->a0
+    syscall_count[num]++;
     p->trapframe->a0 = syscalls[num]();
   } else {
     printf("%d %s: unknown sys call %d\n",
