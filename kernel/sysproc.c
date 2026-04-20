@@ -23,6 +23,15 @@ sys_getpid(void)
 }
 
 uint64
+sys_getcnt(void)
+{
+  int num;
+
+  argint(0, &num);
+  return get_syscall_count(num);
+}
+
+uint64
 sys_fork(void)
 {
   return kfork();

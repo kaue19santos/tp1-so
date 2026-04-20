@@ -101,6 +101,7 @@ extern uint64 sys_unlink(void);
 extern uint64 sys_link(void);
 extern uint64 sys_mkdir(void);
 extern uint64 sys_close(void);
+extern uint64 sys_getcnt(void);
 
 // An array mapping syscall numbers from syscall.h
 // to the function that handles the system call.
@@ -126,9 +127,18 @@ static uint64 (*syscalls[])(void) = {
 [SYS_link]    sys_link,
 [SYS_mkdir]   sys_mkdir,
 [SYS_close]   sys_close,
+[SYS_getcnt]  sys_getcnt,
 };
 
 static uint64 syscall_count[NELEM(syscalls)];
+
+uint64
+get_syscall_count(int num)
+{
+  if(num <= 0 || num >= NELEM(syscalls) || syscalls[num] == 0)
+    return -1;
+  return syscall_count[num];
+}
 
 void
 syscall(void)

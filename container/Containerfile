@@ -1,0 +1,16 @@
+FROM ubuntu:24.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update && apt-get install -y \
+    make \
+    gcc \
+    perl \
+    bc \
+    gdb-multiarch \
+    gcc-riscv64-linux-gnu \
+    binutils-riscv64-linux-gnu \
+    qemu-system-misc \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /work
