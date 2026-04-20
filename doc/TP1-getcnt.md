@@ -37,8 +37,8 @@ Fluxo da implementacao:
 3. Registro no vetor `syscalls[]` em `kernel/syscall.c`.
 4. Funcao auxiliar `get_syscall_count(int)` para validar indice e retornar contagem.
 5. Integracao no user-space com:
-   - prototipo em `user/user.h`
-   - stub em `user/usys.pl`
+    - prototipo em `user/user.h`
+    - stub em `user/usys.pl`
 
 ## Programa de usuario getcnt
 

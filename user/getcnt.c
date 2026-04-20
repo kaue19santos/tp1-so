@@ -11,13 +11,15 @@ is_decimal(const char *s)
         return 0;
 
     i = 0;
-    if (s[0] == '-') {
+    if (s[0] == '-')
+    {
         if (s[1] == '\0')
             return 0;
         i = 1;
     }
 
-    for (; s[i] != '\0'; i++) {
+    for (; s[i] != '\0'; i++)
+    {
         if (s[i] < '0' || s[i] > '9')
             return 0;
     }
