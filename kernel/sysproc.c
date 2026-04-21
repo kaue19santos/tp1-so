@@ -7,7 +7,7 @@
 #include "proc.h"
 #include "vm.h"
 
-extern uint64 syscall_count[22];
+extern uint64 syscall_count[23];
 
 uint64
 sys_exit(void)
